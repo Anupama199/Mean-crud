@@ -1,0 +1,42 @@
+<div class="container box">
+    <div class="row  justify-content-center">
+        <div class="col-lg-5 col-md-10 col-12  outer-box">
+            <h2 id="log" class="text-center text-center">Log In</h2>
+           
+            <form #userform = "ngForm" (ngSubmit)="loginuser()">
+                <br>
+                <div class="form-group">
+                    <label id="l" for="">Email</label>
+                    <input type="email" 
+                    class="form-control " 
+                    required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                    [(ngModel)]="user.email" 
+                    name="Email" #email="ngModel"
+                   >
+                    <small [class.d-none]="email.valid || email.untouched"
+                    class="text-danger bg-warning-subtle p-2 fw-bold">Provide a valid email id</small> 
+                </div>
+            
+                <br>
+  
+               <div class="form-group">
+                <label id="l" for="">Password</label>
+                    <input type="text" 
+                    class="form-control" 
+                    [(ngModel)]="user.password" 
+                    required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                    name="Password" #pwd="ngModel"
+                    [class.is-invalid]="pwd.invalid && pwd.touched"
+                    ><br>
+                    <small [class.d-none]="pwd.valid || pwd.untouched"
+                    class="text-danger bg-warning-subtle p-2 fw-bold">Email must have 8 characters including special characters </small>
+                </div>
+        
+                <br>
+  
+               <button id="button" type="submit" class="btn" [disabled]="userform.invalid">Submit</button>
+            </form>        
+        </div>
+    </div>
+</div>
+  
